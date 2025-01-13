@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reformoti</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      background-color: #141313;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .banner {
+      position: relative;
+      padding: 100px 0;
+    }
+
+    .banner h1 {
+      font-size: 60px;
+      margin: 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .banner .background-text {
+      font-size: 150px;
+      color: rgba(255, 255, 255, 0.1);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      white-space: nowrap;
+    }
+
+    .description {
+      font-size: 24px;
+      margin-top: -20px;
+    }
+
+    .description .hover-effect {
+      display: inline-block;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      animation: none;
+      color: #a0e633;
+      text-decoration: none;
+    }
+
+    .description .hover-effect:hover {
+      animation: shake 0.3s infinite;
+      text-decoration: underline;
+    }
+
+    @keyframes shake {
+      0% {
+        transform: translateX(-3px);
+      }
+
+      25% {
+        transform: translateX(3px);
+      }
+
+      50% {
+        transform: translateX(-3px);
+      }
+
+      75% {
+        transform: translateX(3px);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    .footer {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .footer span {
+      color: #a0e633;
+    }
+
+    .video {
+      display: inline-block;
+    }
+
+    iframe {
+      width: 800px;
+      height: 450px;
+      max-width: 100%;
+      border-radius: 15px;
+      border: 2px solid #a0e633;
+    }
+
+    .fact-section {
+      margin: 120px 0;
+    }
+
+    .fact-section p {
+      font-size: 24px;
+    }
+
+    .fact-section .highlight {
+      color: #a0e633;
+    }
+
+    .triangle {
+      width: 0;
+      height: 0;
+      margin: 40px auto;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 100px solid #a0e633;
+      animation: spin 3s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .slider {
+      margin: 50px auto;
+      width: 80%;
+      max-width: 600px;
+      text-align: center;
+      position: relative;
+    }
+
+    .slider-content {
+      font-size: 24px;
+      padding: 20px;
+      border: 2px solid #a0e633;
+      border-radius: 10px;
+      background-color: #1c1c1c;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .slider-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      bottom: -46px;
+      width: 100%;
+    }
+
+    .slider-buttons button {
+      background-color: transparent;
+      color: #a0e633;
+      border: 2px solid #a0e633;
+      padding: 5px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .slider-buttons button:hover {
+      background-color: #a0e633;
+      color: #141313;
+    }
+
+    .site-footer {
+      background-color: #18181b;
+      padding: 20px;
+      margin: 50px auto 0;
+      font-size: 14px;
+      font-weight: normal;
+      color: white;
+      text-align: center;
+      border-radius: 20px;
+      width: 80%;
+      position: relative;
+    }
+
+    .site-footer img {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .site-footer .footer-text {
+      margin-left: 70px; /* Отступ для текста относительно логотипа */
+      text-align: left;
+    }
+
+    .site-footer .support-text {
+      margin-top: 10px;
+      color: #a0e633;
+      font-style: italic;
+    }
+
+
+
+    .person-slider {
+      margin: 80px auto;
+      width: 90%;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .person-slider h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .person-cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .person-card {
+      text-align: center;
+      width: 150px;
+    }
+
+    .person-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid #a0e633;
+      object-fit: cover;
+    }
+
+    .person-card h3 {
+      font-size: 18px;
+      margin: 10px 0 5px;
+    }
+
+    .person-card p {
+      font-size: 14px;
+      color: #ccc;
+    }
+    .ribbon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #a0e633;
+      color: #141313;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: bold;
+      transform: rotate(45deg);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    .person-card {
+      position: relative; /* Чтобы лента позиционировалась внутри карточки */
+    }
+    .game-container {
+      width: 400px;
+      height: 400px;
+      border: 5px solid #a0e633;
+      position: relative;
+      background-color: #fff;
+      border-radius: 10px;
+    }
+
+    .scoreboard {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 20px;
+      color: #333;
+    }
+
+    .star-shape {
+      width: 100%;
+      height: 100%;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .path {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    .path-line {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 2px solid #a0e633;
+      pointer-events: none;
+    }
+
+    .path-line.active {
+      background-color: #a0e633;
+    }
+
+    .game-over {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 30px;
+      color: red;
+      display: none;
+    }
+
+    .game-start {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 30px;
+      color: green;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="banner">
+    <h1>Reformoti</h1>
+    <div class="background-text">XpiX</div>
+    <div class="description">
+      <p><a class="hover-effect" href="https://discord.gg/9w4krCaaAw" target="_blank">XpiX</a> — это сообщество
+        культистов, известное под названием XpiX.</p>
+    </div>
+  </div>
+
+
+
+  <div class="video">
+    <div class="footer">Известный как <span>ютубер</span></div>
+    <iframe src="https://www.youtube.com/embed/WAHhx46LxV4?si=9B03YkgPvaEQoADv" title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="fact-section">
+    <p><span class="highlight">Интересный факт:</span> треугольник — главный символ Reformoti. Кажется, у него особая
+      страсть к треугольникам..</p>
+    <div class="triangle"></div>
+    <div class="person-slider">
+      <h2>Главные <span style="color: #a0e633;">персоны</span></h2>
+
+      <div class="person-cards">
+        <div class="person-card">
+          <img src="479dd4400524402f6ecc26843dd60395.jpg" alt="zoyrogen">
+          <h3>zoyrogen - Богдан</h3>
+          <p>Интересная персона, создатель сайта, гений, миллиардер, плейбой, филантроп... ну ладно, хотя бы сайт сделал (да, это я).</p>
+        </div>
+        <div class="person-card">
+          <img src="6f4e16c6e5152e35d2dc845db966f1a9.png" alt="Fluiddy">
+          <h3>Fluiddy - Максим</h3>
+          <p>Брат Эмика, близкий друг Эдоса, увлекается фотошопом и является замечательным человеком.</p>
+        </div>
+        <div class="person-card">
+          <div class="ribbon">RIP</div>
+          <img src="e091eae9ce964a36a5270b13a477cb6b.png" alt="t3khn1k">
+          <h3>t3khn1k - Эдуард</h3>
+          <p>Близкий друг Максима, а также просто хороший человек, к сожалению, ушел из жизни.</p>
+        </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="slider">
+    <div id="slider-content" class="slider-content">Иди нафиг — говорит так часто, что кажется, это его пароль от Wi-Fi.
+    </div>
+    <div class="slider-buttons">
+      <button id="prev-btn">Назад</button>
+      <button id="next-btn">Далее</button>
+    </div>
+    
+  </div>
+  <div class="site-footer">
+    Этот сайт является шуточным, и не следует воспринимать его всерьез. Вся информация, представленная здесь, предназначена исключительно для развлечения и не имеет никакой фактической основы.
+  </div>
+  
+  <script>
+    const phrases = [
+      "Иди нафиг — говорит так часто, что кажется, это его пароль от Wi-Fi.",
+      "Шлюха — редко говорит, но если уж заговорит, то так, что уши вянут и соседи записывают!",
+      "Харош — говорит так часто, что создаётся ощущение, будто у него это вместо 'здрасьте', особенно когда ты перед ним хвастаешься.",
+      "Саси — редко говорит, но как шарахнет, хоть стой, хоть падай!"
+    ];
+
+    let currentIndex = 0;
+
+    const sliderContent = document.getElementById('slider-content');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    function updateSlider() {
+      sliderContent.style.opacity = 0;
+      sliderContent.style.transform = 'scale(0.9)';
+      setTimeout(() => {
+        sliderContent.textContent = phrases[currentIndex];
+        sliderContent.style.opacity = 1;
+        sliderContent.style.transform = 'scale(1)';
+      }, 300);
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + phrases.length) % phrases.length;
+      updateSlider();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % phrases.length;
+      updateSlider();
+    });
+  </script>
+  
+</body>
+
+</html>
